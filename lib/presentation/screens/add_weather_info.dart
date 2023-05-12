@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:weather_app/core/data/models/weather_model.dart';
-import 'package:weather_app/core/data/repository/weather_repository.dart';
+import 'package:weather_app/presentation/widgets/icon_text_widget.dart';
 
 class AddWeatherInfo extends StatefulWidget {
-  const AddWeatherInfo({super.key});
+  final WeatherModel weatherModel;
+  const AddWeatherInfo({super.key, required this.weatherModel});
 
   @override
   State<AddWeatherInfo> createState() => _AddWeatherInfoState();
@@ -15,29 +14,37 @@ class _AddWeatherInfoState extends State<AddWeatherInfo> {
   late Future<WeatherModel> weatherData;
 
   @override
-  void initState() {
-    super.initState();
-    WeatherService weatherService = WeatherService();
-
-    weatherData = weatherService.getCurrentWeather();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FutureBuilder<WeatherModel>(
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var data = snapshot.data;
-            return Column(
-              children: [],
-            );
-          }
-          return Dialog(
-            child: Text('G'),
-          );
-        },
-      ),
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 100),
+      child: Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomIconTextWidget(
+                icon: Icons.wind_power,
+                val: '${widget.weatherModel.wind!.speed} km/h',
+                name: 'Wind'),
+            CustomIconTextWidget(
+                icon: Icons.cloud,
+                val: '${widget.weatherModel.clouds!.all} %',
+                name: 'Cloud')
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomIconTextWidget(
+                icon: Icons.thermostat,
+                val: '${widget.weatherModel.main!.pressure} mbar',
+                name: 'Pressure'),
+            CustomIconTextWidget(
+                icon: Icons.water_drop_outlined,
+                val: '${widget.weatherModel.main!.humidity}%',
+                name: 'Humidity')
+          ],
+        ),
+      ]),
     );
   }
 }

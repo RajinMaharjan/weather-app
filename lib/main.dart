@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/presentation/screens/homePage.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

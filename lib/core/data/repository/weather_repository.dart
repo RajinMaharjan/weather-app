@@ -1,8 +1,4 @@
-import 'dart:convert';
-
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:toast/toast.dart';
 import 'package:weather_app/core/utils/constants.dart';
 import 'package:weather_app/core/data/models/weather_model.dart';
@@ -11,16 +7,13 @@ class WeatherService {
   final openWeatherAPIKey = 'f47bdbd3cc575321f125f007a13cad99';
 
   final Dio _dio = Dio();
-  Future<WeatherModel> getCurrentWeather() async {
+  Future<WeatherModel> getCurrentWeather({required String cityName}) async {
+    print('$cityName');
     try {
-      // Position position = await Geolocator.getCurrentPosition(
-      //     desiredAccuracy: LocationAccuracy.high);
-      // final lat = position.latitude;
-      // final lon = position.longitude;
-      // print("lat= $lat ---- lon = $lon");
       final url =
-          "$BASE_URL_WEATHER?q=kathmandu&units=metric&appid=$openWeatherAPIKey";
+          "$BASE_URL_WEATHER?q=$cityName&units=metric&appid=$openWeatherAPIKey";
       final response = await _dio.get(url);
+      print('The status code is ${response.statusCode}$cityName');
 
       switch (response.statusCode) {
         case 200:
