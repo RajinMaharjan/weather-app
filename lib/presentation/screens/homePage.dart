@@ -1,44 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/get.dart';
-import 'package:weather_app/api/api.dart';
-import 'package:weather_app/core/data/models/test_model.dart';
 import 'package:weather_app/core/data/models/weather_model.dart';
+import 'package:weather_app/core/utils/constants.dart';
+import 'package:weather_app/presentation/screens/add_weather_info.dart';
+import 'package:weather_app/presentation/screens/city_entry_bar.dart';
+import 'package:weather_app/presentation/screens/temp_city.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
-  late Future<WeatherTest> weatherData;
-  int index = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    WeatherService weatherService = WeatherService();
-    weatherData = weatherService.getCurrentWeather() as Future<WeatherTest>;
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<WeatherTest>(
-          future: weatherData,
-          builder: (context, snapshot) {
-            var data = snapshot.data;
-            if (snapshot.hasData) {
-              var data = snapshot.data;
-              print(data?.current?.feelsLike);
-            }
-            return Center(
-              child: Text("${data?.current?.feelsLike}"),
-            );
-          }),
+      body: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: AppColors.rainGradient,
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CityEntryBar(),
+              TempCity(),
+              AddWeatherInfo(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
