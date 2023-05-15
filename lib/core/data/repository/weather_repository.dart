@@ -8,12 +8,12 @@ class WeatherService {
 
   final Dio _dio = Dio();
   Future<WeatherModel> getCurrentWeather({required String cityName}) async {
-    print('$cityName');
+    print('The name of city is $cityName');
     try {
       final url =
           "$BASE_URL_WEATHER?q=$cityName&units=metric&appid=$openWeatherAPIKey";
       final response = await _dio.get(url);
-      print('The status code is ${response.statusCode}$cityName');
+      print('The status code is ${response.statusCode} $cityName');
 
       switch (response.statusCode) {
         case 200:

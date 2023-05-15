@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/core/data/repository/weather_repository.dart';
 import 'package:weather_app/core/utils/constants.dart';
-import 'package:weather_app/presentation/screens/homePage.dart';
+import 'package:weather_app/presentation/pages/homePage.dart';
 
 // final _cityProvider = ChangeNotifierProvider((ref) {
 //   return CityProvider('Kathmandu');
