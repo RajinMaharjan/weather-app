@@ -6,6 +6,7 @@ enum WeatherState { isLoading, completed, init }
 
 abstract class WeatherProvider {
   getWeatherData({required String city});
+  updateWeatherData({required String city});
 }
 
 class WeatherProviderImpl extends ChangeNotifier implements WeatherProvider {
@@ -15,11 +16,17 @@ class WeatherProviderImpl extends ChangeNotifier implements WeatherProvider {
 
   @override
   Future<void> getWeatherData({required String city}) async {
-    weatherState = WeatherState.isLoading;
-    notifyListeners();
+    if (_weatherModel == null) {
+      weatherState = WeatherState.isLoading;
+      notifyListeners();
+    }
+
     _weatherModel = await WeatherService().getCurrentWeather(cityName: city);
     print("The cloud percentage is ${_weatherModel!.toJson()}");
-    // weatherState = WeatherState.completed;
+    weatherState = WeatherState.completed;
     notifyListeners();
   }
+
+  @override
+  updateWeatherData({required String city}) {}
 }

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     Provider.debugCheckInvalidValueType = null;
     return MultiProvider(
       providers: [
-        Provider<WeatherProviderImpl>(create: (_) => WeatherProviderImpl()),
+        ChangeNotifierProvider(create: (_) => WeatherProviderImpl()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

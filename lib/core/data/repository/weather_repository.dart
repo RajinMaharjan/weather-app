@@ -18,6 +18,7 @@ class WeatherService {
       switch (response.statusCode) {
         case 200:
           WeatherModel weatherData = WeatherModel.fromJson(response.data);
+          print("City name is ${weatherData.name}");
           return weatherData;
 
         default:

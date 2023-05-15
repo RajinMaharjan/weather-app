@@ -106,13 +106,6 @@ class _TempCityState extends State<TempCity> {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
-            child: Divider(
-              color: Colors.white70,
-              thickness: 1.5,
-            ),
-          )
         ],
       ),
     );

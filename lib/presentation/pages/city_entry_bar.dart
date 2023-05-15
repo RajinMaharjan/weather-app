@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/core/data/repository/weather_repository.dart';
 import 'package:weather_app/core/utils/constants.dart';
 import 'package:weather_app/presentation/pages/homePage.dart';
+import 'package:weather_app/presentation/provider/weather_provider.dart';
 
 // final _cityProvider = ChangeNotifierProvider((ref) {
 //   return CityProvider('Kathmandu');
@@ -67,7 +68,9 @@ class CityEntryBar extends StatelessWidget {
             onTap: () {
               FocusScope.of(context).unfocus();
               final cityName = _cityEditController.text;
-              WeatherService().getCurrentWeather(cityName: cityName);
+              context
+                  .read<WeatherProviderImpl>()
+                  .getWeatherData(city: cityName);
             },
           )
         ],

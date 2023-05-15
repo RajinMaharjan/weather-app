@@ -16,14 +16,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<WeatherModel> weatherData;
-
   @override
   void initState() {
     super.initState();
     WeatherProviderImpl weatherProvider =
         Provider.of<WeatherProviderImpl>(context, listen: false);
-    weatherProvider.getWeatherData(city: "Lalitpur");
+
+    weatherProvider.getWeatherData(city: "Kathmandu");
+    print("aa");
 
     // WeatherService weatherService = WeatherService();
 
@@ -34,13 +34,49 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Consumer<WeatherProviderImpl>(builder: (context, response, _) {
-      // weatherData = response.;
-      print("thr weater state is ${response.weatherState}");
+      print("the weather state is ${response.weatherState}");
       switch (response.weatherState) {
         case WeatherState.completed:
-          print("The data is ${response.weatherModel.toJson()}");
-          return Container();
+          final weatherData = response.weatherModel;
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: AppColors.rainGradient,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CityEntryBar(),
+                    Spacer(),
+                    TempCity(
+                      weatherModel: weatherData,
+                    ),
+                    Spacer(),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
+                      child: Divider(
+                        color: Colors.white70,
+                        thickness: 1.5,
+                      ),
+                    ),
+                    Spacer(),
+                    AddWeatherInfo(
+                      weatherModel: weatherData,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
         case WeatherState.isLoading:
+          return CircularProgressIndicator();
         default:
           return CircularProgressIndicator();
       }
