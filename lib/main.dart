@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app/presentation/pages/decision_page.dart';
 import 'package:weather_app/presentation/pages/homePage.dart';
 import 'package:weather_app/presentation/provider/weather_provider.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(),
+        home: const DecisionPage(),
       ),
     );
   }

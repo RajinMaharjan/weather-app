@@ -26,8 +26,26 @@ class WeatherService {
           throw 'failed to fetch data';
       }
     } on DioError catch (e) {
-      print('Failed to fetch data: $e');
-      throw 'ss';
+      print(" the typpeeee of f eeerrr${e.type}");
+      switch (e.type) {
+        case DioErrorType.connectionError:
+          throw 'noConn';
+
+        case DioErrorType.connectionTimeout:
+          throw 'connTimeOut';
+
+        case DioErrorType.sendTimeout:
+          throw 'unkCity';
+
+        case DioErrorType.receiveTimeout:
+          throw 'loadCityErr';
+
+        case DioErrorType.badResponse:
+          throw 'badRes';
+
+        default:
+          throw 'unkErr';
+      }
     }
   }
 }

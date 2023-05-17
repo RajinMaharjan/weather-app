@@ -9,3 +9,9 @@ class AppColors {
   static const rainGradient = [rainBlueLight, rainBlueDark];
   static const accentColor = Color(0xFFe96e50);
 }
+
+class ImgUrls {
+  static const String city = "images/city.png";
+  static const String conn = "images/connection.png";
+  static const String unknown_err = "images/unknown_error.png";
+}
