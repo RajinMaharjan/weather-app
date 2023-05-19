@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
   final bool isTrue;
   final WeatherModel? weatherModel;
   final String? img;
-  HomePage(
+  const HomePage(
       {super.key, this.err, required this.isTrue, this.weatherModel, this.img});
 
   @override
@@ -49,12 +49,12 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CityEntryBar(),
-                      Spacer(),
+                      const CityEntryBar(),
+                      const Spacer(),
                       TempCity(
                         weatherModel: widget.weatherModel!,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                         child: Divider(
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                           thickness: 1.5,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       AddWeatherInfo(
                         weatherModel: widget.weatherModel!,
                       ),
