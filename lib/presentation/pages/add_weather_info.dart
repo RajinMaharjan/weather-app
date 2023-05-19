@@ -16,7 +16,7 @@ class _AddWeatherInfoState extends State<AddWeatherInfo> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 100),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
       child: Column(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

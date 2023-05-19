@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/core/utils/constants.dart';
 import 'package:weather_app/presentation/provider/weather_provider.dart';
 
 class CityEntryBar extends StatefulWidget {
-  CityEntryBar({super.key});
+  const CityEntryBar({super.key});
 
   @override
   State<CityEntryBar> createState() => _CityEntryBarState();
@@ -19,7 +18,7 @@ class _CityEntryBarState extends State<CityEntryBar> {
       content: Text(
         title,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 15),
+        style: const TextStyle(fontSize: 15),
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
@@ -68,21 +67,23 @@ class _CityEntryBarState extends State<CityEntryBar> {
               ),
             ),
             onTap: () async {
-              print("object");
-              final isConnected =
-                  await InternetConnectionChecker().hasConnection;
-              print("object2");
+              //Add this code if you need to instantly check the connection .
+              //for this internet_connection_checker package must be used
+              // print("object");
+              // final isConnected =
+              //     await InternetConnectionChecker().hasConnection;
+              // print("object2");
 
-              if (!isConnected) {
-                print("This is $isConnected");
-                showSnackBar("No internet connection.");
-              } else {
-                FocusScope.of(context).unfocus();
-                final cityName = _cityEditController.text;
-                context
-                    .read<WeatherProviderImpl>()
-                    .getWeatherData(city: cityName);
-              }
+              // if (!isConnected) {
+              //   print("This is $isConnected");
+              //   showSnackBar("No internet connection.");
+              // } else {
+              FocusScope.of(context).unfocus();
+              final cityName = _cityEditController.text;
+              context
+                  .read<WeatherProviderImpl>()
+                  .getWeatherData(city: cityName);
+              // }
             },
           )
         ],

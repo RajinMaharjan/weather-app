@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/presentation/pages/decision_page.dart';
-import 'package:weather_app/presentation/pages/homePage.dart';
+import 'package:weather_app/presentation/pages/splash_screen.dart';
 import 'package:weather_app/presentation/provider/weather_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,11 +19,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => WeatherProviderImpl()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const DecisionPage(),
+        // home: const DecisionPage(),
+        home: const SplashScreen(),
       ),
     );
   }

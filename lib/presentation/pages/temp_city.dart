@@ -18,7 +18,7 @@ class _TempCityState extends State<TempCity> {
           Center(
             child: Text(
               '${widget.weatherModel.name}, ${widget.weatherModel.sys!.country}',
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 30,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
@@ -31,13 +31,13 @@ class _TempCityState extends State<TempCity> {
           ),
           Text(
             ' ${widget.weatherModel.weather![0].description}',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 17,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -45,7 +45,7 @@ class _TempCityState extends State<TempCity> {
             children: [
               Text(
                 '${widget.weatherModel.main?.temp?.round()} °C',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 50,
                   color: Colors.white,
                   fontWeight: FontWeight.w300,
@@ -53,7 +53,7 @@ class _TempCityState extends State<TempCity> {
               ),
               Column(
                 children: [
-                  Text(
+                  const Text(
                     'Feels Like ',
                     style: TextStyle(
                       fontSize: 18,
@@ -63,7 +63,7 @@ class _TempCityState extends State<TempCity> {
                   ),
                   Text(
                     '${widget.weatherModel.main?.feelsLike?.round()}°C',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
@@ -82,13 +82,13 @@ class _TempCityState extends State<TempCity> {
             children: [
               Text(
                 'lat: ${widget.weatherModel.coord!.lat}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 17,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
                 child: VerticalDivider(
                   color: Colors.white70,
@@ -98,7 +98,7 @@ class _TempCityState extends State<TempCity> {
               ),
               Text(
                 'long: ${widget.weatherModel.coord!.lon}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 17,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

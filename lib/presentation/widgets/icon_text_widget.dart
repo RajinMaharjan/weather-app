@@ -23,7 +23,7 @@ class CustomIconTextWidget extends StatelessWidget {
             color: Colors.white70,
             size: 40,
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Column(
@@ -31,14 +31,14 @@ class CustomIconTextWidget extends StatelessWidget {
             children: [
               Text(
                 val,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white70,
                 ),
               ),
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white70,
                 ),

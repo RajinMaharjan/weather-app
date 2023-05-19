@@ -36,7 +36,8 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: (widget.isTrue)
               ? Container(
-                  height: MediaQuery.of(context).size.height,
+                  height: fullHeight(context),
+                  width: fullWidth(context),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -87,7 +88,11 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 30,
                         ),
-                        Image.asset(widget.img!),
+                        Image.asset(
+                          widget.img!,
+                          height: 150,
+                          width: 150,
+                        ),
                         const SizedBox(
                           height: 30,
                         ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/core/utils/constants.dart';
 import 'package:weather_app/presentation/pages/homePage.dart';
+import 'package:weather_app/presentation/pages/loading_page.dart';
 import 'package:weather_app/presentation/provider/weather_provider.dart';
-import 'package:weather_app/presentation/widgets/loading_indicator.dart';
 
 class DecisionPage extends StatefulWidget {
   const DecisionPage({super.key});
@@ -21,56 +21,13 @@ class _DecisionPageState extends State<DecisionPage> {
         Provider.of<WeatherProviderImpl>(context, listen: false);
 
     weatherProvider.getWeatherData(city: "Kathmandu");
-    print("aa");
-  }
-
-  Future<void> _refreshData(String? city) async {
-    WeatherProviderImpl weatherProvider =
-        Provider.of<WeatherProviderImpl>(context, listen: false);
-
-    await weatherProvider.getWeatherData(city: city!);
+    // print("aa");
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherProviderImpl>(builder: (context, response, _) {
       switch (response.weatherState) {
-        case WeatherState.connErr:
-          return HomePage(
-            isTrue: false,
-            err: "No internet connection.",
-            img: ImgUrls.connectionError,
-          );
-        case WeatherState.conTimeOut:
-          return HomePage(
-            isTrue: false,
-            err: "Failed to connect to the network.",
-            img: ImgUrls.connectionError,
-          );
-        case WeatherState.reqErr:
-          return HomePage(
-            isTrue: false,
-            err: "Failed to fetch city.",
-            img: ImgUrls.cityError,
-          );
-        case WeatherState.sendErr:
-          return HomePage(
-            isTrue: false,
-            err: "Unknown City Name",
-            img: ImgUrls.cityError,
-          );
-        case WeatherState.badResErr:
-          return HomePage(
-            isTrue: false,
-            err: "Unknown City Name",
-            img: ImgUrls.cityError,
-          );
-        case WeatherState.defErr:
-          return HomePage(
-            isTrue: false,
-            err: "Unknown Error",
-            img: ImgUrls.unknownError,
-          );
         case WeatherState.completed:
           final weatherData = response.weatherModel;
           return HomePage(
@@ -78,9 +35,50 @@ class _DecisionPageState extends State<DecisionPage> {
             weatherModel: weatherData,
           );
         case WeatherState.isLoading:
-          return const LoadingIndicator();
+          return const LoadingPage();
+        case WeatherState.hasError:
+          {
+            switch (response.error) {
+              case Error.connection:
+                return HomePage(
+                  isTrue: false,
+                  err: "No internet connection.",
+                  img: ImagePath.connectionError,
+                );
+              case Error.connectionTimeOut:
+                return HomePage(
+                  isTrue: false,
+                  err: "Failed to connect to the network.",
+                  img: ImagePath.connectionError,
+                );
+              case Error.request:
+                return HomePage(
+                  isTrue: false,
+                  err: "Failed to fetch city.",
+                  img: ImagePath.cityError,
+                );
+              case Error.send:
+                return HomePage(
+                  isTrue: false,
+                  err: "Unknown City Name",
+                  img: ImagePath.cityError,
+                );
+              case Error.response:
+                return HomePage(
+                  isTrue: false,
+                  err: "Unknown City Name",
+                  img: ImagePath.cityError,
+                );
+              default:
+                return HomePage(
+                  isTrue: false,
+                  err: "No internet connection",
+                  img: ImagePath.connectionError,
+                );
+            }
+          }
         default:
-          return const LoadingIndicator();
+          return const LoadingPage();
       }
     });
   }
