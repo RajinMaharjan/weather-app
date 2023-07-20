@@ -23,15 +23,15 @@ The Weather App is a lightweight and user-friendly application that allows users
   
   Note: The app requires an API key from Open Weather Map.
 
-##Usage
+## Usage
   Open this app to get weather condition of kathmandu at first. After that you can search for the city to know the weather condition of the city.
   
-##Screenshots
+## Screenshots
   
-##Configuration
+## Configuration
   1. Obtain an API key from https://openweathermap.org/current
 
-##Contact
+## Contact
   For any queries or feedback, feel free to reach out to the project maintainer:
     - Email: mjnrajin.18@gmail.com
     - Linkedin: https://www.linkedin.com/in/rajin-maharjan-b72331223/
