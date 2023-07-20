@@ -33,7 +33,7 @@ The Weather App is a lightweight and user-friendly application that allows users
 
 ## Contact
   For any queries or feedback, feel free to reach out to the project maintainer:
-    - Email: mjnrajin.18@gmail.com
-    - Linkedin: https://www.linkedin.com/in/rajin-maharjan-b72331223/
+  - Email: mjnrajin.18@gmail.com
+  - Linkedin: https://www.linkedin.com/in/rajin-maharjan-b72331223/
   
 
