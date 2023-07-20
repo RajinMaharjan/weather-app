@@ -4,7 +4,7 @@ import 'package:weather_app/core/utils/constants.dart';
 import 'package:weather_app/core/data/models/weather_model.dart';
 
 class WeatherService {
-  final openWeatherAPIKey = 'f47bdbd3cc575321f125f007a13cad99';
+  final openWeatherAPIKey = 'YOUR_API_KEY';
 
   final Dio _dio = Dio();
   Future<WeatherModel> getCurrentWeather({required String cityName}) async {
