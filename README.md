@@ -1,7 +1,7 @@
 # weather_app
 A simple weather app that provides current weather information for various locations i.e. location of the city. 
 
-##Table of Contents
+## Table of Contents
   - Project Overview
   - Intallation
   - Usage
